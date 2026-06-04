@@ -1,0 +1,48 @@
+package RedProfesional.Cola;
+
+import RedProfesional.Postulacion;
+
+public class BandejaPostulaciones implements ColaTDA {
+    private NodoPostulacion primero;
+    private NodoPostulacion ultimo;
+
+    @Override
+    public void inicializarCola() {
+        primero = null;
+        ultimo = null;
+    }
+
+    @Override
+    public void acolar(Postulacion x) {
+        NodoPostulacion nuevo = new NodoPostulacion();
+        nuevo.valor = x;
+        nuevo.siguiente = null;
+
+        if (ultimo != null) {
+            ultimo.siguiente = nuevo;
+        }
+        ultimo = nuevo;
+
+        if (primero == null) {
+            primero = ultimo;
+        }
+    }
+
+    @Override
+    public void desacolar() {
+        primero = primero.siguiente;
+        if (primero == null) {
+            ultimo = null;
+        }
+    }
+
+    @Override
+    public Postulacion primero() {
+        return primero.valor;
+    }
+
+    @Override
+    public boolean colaVacia() {
+        return (primero == null);
+    }
+}

@@ -3,6 +3,10 @@ package RedProfesional;
 import RedProfesional.Arbol.ArbolHabilidades;
 import RedProfesional.Diccionario.DiccionarioUsuarios;
 import RedProfesional.Grafo.RedConexiones;
+import RedProfesional.Cola.ColaTDA;
+import RedProfesional.Cola.BandejaPostulaciones;
+import RedProfesional.Pila.PilaTDA;
+import RedProfesional.Pila.RegistroCambios;
 
 public class Main {
     public static void main(String[] args) {
@@ -106,5 +110,78 @@ public class Main {
         // Contar habilidades
         System.out.println("Cantidad total de habilidades: " + arbol.contarHabilidades());
 
+
+        System.out.println("\n====================================");
+        System.out.println(" PRUEBA 4: GESTIÓN DE POSTULACIONES (COLA)");
+        System.out.println("====================================");
+
+        /*
+         * PRUEBA DE LA COLA DE POSTULACIONES LABORALES
+         * Se verifica:
+         * - Inicialización de la cola
+         * - Acolar postulaciones asociadas a usuarios
+         * - Procesamiento respetando el orden de llegada (FIFO)
+         */
+
+        // Crear cola
+        ColaTDA colaPostulaciones = new BandejaPostulaciones();
+        colaPostulaciones.inicializarCola();
+
+        // Crear postulaciones
+        Postulacion post1 = new Postulacion(101, usuario1.getIdUsuario(), "Desarrollador Backend", "10-06-2026");
+        Postulacion post2 = new Postulacion(102, usuario2.getIdUsuario(), "Arquitecto de Software", "11-06-2026");
+
+        // Acolar postulaciones
+        colaPostulaciones.acolar(post1);
+        System.out.println("Postulación encolada: " + post1.getPuesto());
+        colaPostulaciones.acolar(post2);
+        System.out.println("Postulación encolada: " + post2.getPuesto());
+
+        // Procesar y desacolar postulaciones
+        System.out.println("\nProcesando postulaciones:");
+        while (!colaPostulaciones.colaVacia()) {
+            System.out.println("Atendiendo postulación: " + colaPostulaciones.primero().getPuesto());
+            colaPostulaciones.desacolar();
+        }
+
+
+        System.out.println("\n====================================");
+        System.out.println(" PRUEBA 5: HISTORIAL DE CAMBIOS (PILA)");
+        System.out.println("====================================");
+
+        /*
+         * PRUEBA DE LA PILA DE HISTORIAL DE CAMBIOS
+         * Se verifica:
+         * - Inicialización de la pila
+         * - Apilar modificaciones de perfil
+         * - Desapilar para deshacer la última actualización (LIFO)
+         */
+
+        // Crear pila
+        PilaTDA historial = new RegistroCambios();
+        historial.inicializarPila();
+
+        // Crear registros de cambios
+        HistorialCambios cambio1 = new HistorialCambios("12-06-2026", "Se actualizó la experiencia a 5 años", perfil1);
+        HistorialCambios cambio2 = new HistorialCambios("13-06-2026", "Se agregó habilidad Java", perfil1);
+
+        // Apilar cambios
+        historial.apilar(cambio1);
+        System.out.println("Cambio apilado: " + cambio1.getDescripcionCambio());
+        historial.apilar(cambio2);
+        System.out.println("Cambio apilado: " + cambio2.getDescripcionCambio());
+
+        // Deshacer último cambio
+        System.out.println("\nDeshaciendo el último cambio:");
+        if (!historial.pilaVacia()) {
+            System.out.println("Deshaciendo: " + historial.tope().getDescripcionCambio());
+            historial.desapilar();
+        }
+
+        // Mostrar estado del tope
+        System.out.println("Último estado en el tope:");
+        if (!historial.pilaVacia()) {
+            System.out.println(historial.tope().getDescripcionCambio());
+        }
     }
 }
