@@ -1,5 +1,6 @@
 package RedProfesional;
 
+import RedProfesional.Arbol.ArbolHabilidades;
 import RedProfesional.Diccionario.DiccionarioUsuarios;
 import RedProfesional.Grafo.RedConexiones;
 
@@ -75,5 +76,35 @@ public class Main {
 
         System.out.println("\n¿Juan está conectado con Pedro? " + red.existeArista(usuario1, usuario2));
         System.out.println("¿Pedro está conectado con Juan? " + red.existeArista(usuario2, usuario1));
+
+
+        System.out.println("\n====================================");
+        System.out.println(" PRUEBA 3: JERARQUÍA DE HABILIDADES");
+        System.out.println("====================================");
+
+        ArbolHabilidades arbol = new ArbolHabilidades();
+
+        // Crear raíz
+        arbol.inicializarArbol("Tecnología");
+
+        // Agregar categorías
+        arbol.insertarHabilidad("Tecnología", "Desarrollo");
+        arbol.insertarHabilidad("Tecnología", "Infraestructura");
+
+        // Agregar subcategorías
+        arbol.insertarHabilidad("Desarrollo", "Java");
+        arbol.insertarHabilidad("Desarrollo", "Python");
+        arbol.insertarHabilidad("Infraestructura", "Redes");
+
+        // Mostrar árbol
+        System.out.println("\nJerarquía de habilidades:");
+        arbol.mostrarJerarquia();
+
+        // Buscar habilidad
+        System.out.println("\n¿Existe Java? " + arbol.buscarHabilidad("Java"));
+
+        // Contar habilidades
+        System.out.println("Cantidad total de habilidades: " + arbol.contarHabilidades());
+
     }
 }
