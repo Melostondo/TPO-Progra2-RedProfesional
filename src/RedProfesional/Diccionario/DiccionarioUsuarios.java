@@ -1,6 +1,11 @@
 package RedProfesional.Diccionario;
-
 import RedProfesional.Usuario;
+
+/*
+ * Implementación de un Diccionario TDA para gestionar usuarios.
+ * Cada usuario se almacena mediante una clave única (ID),
+ * permitiendo operaciones de inserción, búsqueda, modificación y eliminación.
+ */
 
 public class DiccionarioUsuarios implements DiccionarioTDA {
 

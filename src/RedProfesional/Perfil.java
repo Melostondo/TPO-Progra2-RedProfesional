@@ -25,9 +25,7 @@ public class Perfil {
 
     @Override
     public String toString() {
-        return "Perfil{" +
-                "descripcion='" + descripcion + '\'' +
-                ", experiencia='" + experiencia + '\'' +
-                '}';
+        return "Descripción: " + descripcion +
+                " | Experiencia: " + experiencia;
     }
 }
