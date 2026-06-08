@@ -90,17 +90,16 @@ https://github.com/Melostondo/TPO-Progra2-RedProfesional
 # ACTIVIDADES REALIADAS POR CADA INTEGRANTE
 
 # Manuel Elostondo
-* Diseño general del proyecto.
 * Implementación de la estructura Diccionario de Usuarios.
 * Implementación de la estructura Grafo de Conexiones.
 * Implementación de la estructura Árbol de Habilidades.
-* Desarrollo y mantenimiento de la clase Main.
-* Configuración y administración del repositorio GitHub.
+* Desarrollo y pruebas de la clase Main.
+* Configuración del repositorio GitHub.
 * Pruebas funcionales de las estructuras implementadas.
 
 # Francisco Pettis
 * Implementación de la estructura Cola para gestión de postulaciones.
 * Implementación de la estructura Pila para historial de cambios.
-* Colaboración en pruebas funcionales.
+* Ejecucion de pruebas funcionales.
 * Modificaciones y mejoras sobre la clase Main.
 * Integración de funcionalidades al repositorio.
