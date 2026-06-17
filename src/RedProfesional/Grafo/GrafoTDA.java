@@ -11,4 +11,6 @@ public interface GrafoTDA {
     boolean existeArista(Usuario origen, Usuario destino);
     void mostrarMatriz();
     void mostrarVertices();
+    int gradoSeparacion(Usuario origen, Usuario destino);
+    void sugerirContactos(Usuario usuario);
 }

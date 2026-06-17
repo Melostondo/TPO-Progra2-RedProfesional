@@ -22,11 +22,11 @@ public class Main {
         // Crear perfiles
         Perfil perfil1 = new Perfil("Programador Java", "2 años");
         Perfil perfil2 = new Perfil("Analista Funcional", "3 años");
-
+        Perfil perfil3 = new Perfil("Analista de datos", "1 años");
         // Crear usuarios
         Usuario usuario1 = new Usuario(1, "Juan", "juan@gmail.com", perfil1);
         Usuario usuario2 = new Usuario(2, "Pedro", "pedro@gmail.com", perfil2);
-
+        Usuario usuario3 = new Usuario(3,"Manuel","manuel@gmail.com", perfil3);
         // Insertar usuarios
         diccionario.insertar(1, usuario1);
         diccionario.insertar(2, usuario2);
@@ -62,6 +62,8 @@ public class Main {
          * - Inserción de usuarios como vértices
          * - Creación de conexiones
          * - Verificación de conexiones
+         * - Usuarios recomendados
+         * - DIstancia entre usuarios
          * - Visualización de matriz de adyacencia
          */
 
@@ -70,9 +72,11 @@ public class Main {
         // Insertar usuarios como vértices
         red.insertarVertice(usuario1);
         red.insertarVertice(usuario2);
+        red.insertarVertice(usuario3);
 
         // Crear conexión entre usuarios
         red.insertarArista(usuario1, usuario2);
+        red.insertarArista(usuario2, usuario3);
 
         // Mostrar usuarios y conexiones
         red.mostrarVertices();
@@ -81,6 +85,10 @@ public class Main {
         System.out.println("\n¿Juan está conectado con Pedro? " + red.existeArista(usuario1, usuario2));
         System.out.println("¿Pedro está conectado con Juan? " + red.existeArista(usuario2, usuario1));
 
+        System.out.println(
+                "Grado de separación entre Juan y Ana: "
+                        + red.gradoSeparacion(usuario1, usuario3)
+        );
 
         System.out.println("\n====================================");
         System.out.println(" PRUEBA 3: JERARQUÍA DE HABILIDADES");

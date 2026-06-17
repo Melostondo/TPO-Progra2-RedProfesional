@@ -128,6 +128,88 @@ public class RedConexiones implements GrafoTDA {
     }
 
     @Override
+    public int gradoSeparacion(Usuario origen, Usuario destino) {
+        int posOrigen = obtenerIndice(origen);
+        int posDestino = obtenerIndice(destino);
+
+        if (posOrigen == -1 || posDestino == -1) {
+            return -1;
+        }
+
+        boolean[] visitados = new boolean[cantidad];
+        int[] distancia = new int[cantidad];
+
+        for (int i = 0; i < cantidad; i++) {
+            visitados[i] = false;
+            distancia[i] = -1;
+        }
+
+        int[] cola = new int[cantidad];
+        int frente = 0;
+        int fin = 0;
+
+        cola[fin] = posOrigen;
+        fin++;
+
+        visitados[posOrigen] = true;
+        distancia[posOrigen] = 0;
+
+        while (frente < fin) {
+
+            int actual = cola[frente];
+            frente++;
+
+            for (int i = 0; i < cantidad; i++) {
+
+                if (matriz[actual][i] == 1 && !visitados[i]) {
+
+                    visitados[i] = true;
+                    distancia[i] = distancia[actual] + 1;
+
+                    cola[fin] = i;
+                    fin++;
+
+                    if (i == posDestino) {
+                        return distancia[i];
+                    }
+                }
+            }
+        }
+
+        return -1;
+    }
+
+
+    @Override
+    public void sugerirContactos(Usuario usuario) {
+
+        int posUsuario = obtenerIndice(usuario);
+
+        if (posUsuario == -1) {
+            System.out.println("Usuario inexistente.");
+            return;
+        }
+
+        System.out.println("Contactos recomendados para " + usuario.getNombre() + ":");
+
+        for (int i = 0; i < cantidad; i++) {
+
+            if (matriz[posUsuario][i] == 1) {
+
+                for (int j = 0; j < cantidad; j++) {
+
+                    if (matriz[i][j] == 1 &&
+                            j != posUsuario &&
+                            matriz[posUsuario][j] == 0) {
+
+                        System.out.println(vertices[j].getNombre());
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
     public void mostrarMatriz() {
         System.out.println("Matriz de conexiones:");
 
