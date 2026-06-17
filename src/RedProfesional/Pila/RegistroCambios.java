@@ -20,16 +20,25 @@ public class RegistroCambios implements PilaTDA {
 
     @Override
     public void desapilar() {
-        tope = tope.siguiente;
+        if (pilaVacia()) {
+            System.out.println("Error: no se puede desapilar porque la pila está vacía.");
+        } else {
+            tope = tope.siguiente;
+        }
     }
 
     @Override
     public HistorialCambios tope() {
+        if (pilaVacia()) {
+            System.out.println("Error: la pila está vacía.");
+            return null;
+        }
+
         return tope.valor;
     }
 
     @Override
     public boolean pilaVacia() {
-        return (tope == null);
+        return tope == null;
     }
 }

@@ -21,6 +21,7 @@ public class BandejaPostulaciones implements ColaTDA {
         if (ultimo != null) {
             ultimo.siguiente = nuevo;
         }
+
         ultimo = nuevo;
 
         if (primero == null) {
@@ -30,19 +31,29 @@ public class BandejaPostulaciones implements ColaTDA {
 
     @Override
     public void desacolar() {
-        primero = primero.siguiente;
-        if (primero == null) {
-            ultimo = null;
+        if (colaVacia()) {
+            System.out.println("Error: no se puede desacolar porque la cola está vacía.");
+        } else {
+            primero = primero.siguiente;
+
+            if (primero == null) {
+                ultimo = null;
+            }
         }
     }
 
     @Override
     public Postulacion primero() {
+        if (colaVacia()) {
+            System.out.println("Error: la cola está vacía.");
+            return null;
+        }
+
         return primero.valor;
     }
 
     @Override
     public boolean colaVacia() {
-        return (primero == null);
+        return primero == null;
     }
 }

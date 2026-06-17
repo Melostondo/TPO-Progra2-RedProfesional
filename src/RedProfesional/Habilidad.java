@@ -30,4 +30,5 @@ public class Habilidad {
                 ", categoria='" + categoria + '\'' +
                 '}';
     }
+
 }
