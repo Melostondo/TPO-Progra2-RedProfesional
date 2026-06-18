@@ -7,7 +7,7 @@ Proyecto correspondiente a la asignatura Programación II, enfocado en la implem
 * Pettis Francisco
 
 ## Alternativa elegida
-* [COMPLETAR AQUÍ LA ALTERNATIVA ELEGIDA]
+*  Alternativa A:"Ecosistema de red social profesional"
 
 ## Estructuras de datos utilizadas
 Para resolver la problemática planteada, se implementaron los siguientes TDAs propios:
@@ -25,11 +25,11 @@ Para resolver la problemática planteada, se implementaron los siguientes TDAs p
 * Registro de cambios en el perfil con capacidad de restaurar el estado anterior.
 
 ## Link del repositorio
-* [COMPLETAR AQUÍ CON EL LINK DE TU REPOSITORIO]
+* https://github.com/Melostondo/TPO-Progra2-RedProfesional
 
 ## Actividades realizadas por cada integrante
-* Elostondo Manuel: [COMPLETAR AQUÍ QUÉ HIZO (ej. Implementación de Grafo y Árbol, Casos de Prueba)]
-* Pettis Francisco: [COMPLETAR AQUÍ QUÉ HIZO (ej. Implementación de Diccionario, Pila, Cola y Modelos)]
+* Elostondo Manuel:TDAs de Arbol, Diccionario, Grafo, Habilidad, HistorialDeCambios y Main
+* Pettis Francisco: TDAs de pila, cola, Perfil, Usuario, Postulacion y Main
 
 ## Instrucciones de ejecución
 1. Clonar el repositorio.
