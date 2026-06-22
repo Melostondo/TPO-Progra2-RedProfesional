@@ -21,7 +21,7 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
         cant = 0;
     }
 
-    private int buscarPosicion(int clave) {
+    private int buscarPosicion(int clave) { //BUSCA LA POSICION DEL USUARIO MEDIANTE SU CLAVE
         for (int i = 0; i < cant; i++) {
             if (claves[i] == clave) {
                 return i;
@@ -31,7 +31,7 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
     }
 
     @Override
-    public void insertar(int clave, Usuario valor) {
+    public void insertar(int clave, Usuario valor) { // INSERTA UN USUARIO AL DICCIONARIO
         if (cant == MAX) {
             System.out.println("Error: diccionario lleno");
         } else if (pertenece(clave)) {
@@ -44,7 +44,7 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
     }
 
     @Override
-    public void eliminar(int clave) {
+    public void eliminar(int clave) { //ELIMINA AL USUARIO DEL DICCIONARIO MEDIANTE LA CALVE
         int pos = buscarPosicion(clave);
 
         if (pos == -1) {
@@ -59,7 +59,7 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
     }
 
     @Override
-    public Usuario recuperar(int clave) {
+    public Usuario recuperar(int clave) { // MEDIANTE LA CLAVE OBTIENE LOS VALORES
         int pos = buscarPosicion(clave);
 
         if (pos == -1) {
@@ -70,12 +70,13 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
     }
 
     @Override
-    public boolean pertenece(int clave) {
+    public boolean pertenece(int clave) { // BUSCA AL USUARIO MEDIANTE LA CLAVE PARA VERIFICAR SI PERTENCE
+
         return buscarPosicion(clave) != -1;
     }
 
     @Override
-    public void modificar(int clave, Usuario nuevoValor) {
+    public void modificar(int clave, Usuario nuevoValor) { // MODIFICA AL USUARIO MEDIANTE LA BUSQUEDA POR CLAVE
         int pos = buscarPosicion(clave);
 
         if (pos == -1) {
@@ -87,6 +88,7 @@ public class DiccionarioUsuarios implements DiccionarioTDA {
 
     @Override
     public int tamano() {
+
         return cant;
     }
 

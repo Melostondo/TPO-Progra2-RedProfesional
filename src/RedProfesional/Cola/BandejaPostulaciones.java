@@ -13,7 +13,7 @@ public class BandejaPostulaciones implements ColaTDA {
     }
 
     @Override
-    public void acolar(Postulacion x) {
+    public void acolar(Postulacion x) { // AGREGA UNA NUEVA POSTULACION EN LA COLA
         NodoPostulacion nuevo = new NodoPostulacion();
         nuevo.valor = x;
         nuevo.siguiente = null;
@@ -30,7 +30,7 @@ public class BandejaPostulaciones implements ColaTDA {
     }
 
     @Override
-    public void desacolar() {
+    public void desacolar() { // ELIMINA/ATIENDE LA POSTULACION QUE SE ENCUENTRA AL FRENTE DE LA COLA
         if (colaVacia()) {
             System.out.println("Error: no se puede desacolar porque la cola está vacía.");
         } else {
@@ -43,7 +43,7 @@ public class BandejaPostulaciones implements ColaTDA {
     }
 
     @Override
-    public Postulacion primero() {
+    public Postulacion primero() { // ATIENDE LA PRIMERA POSTULACION
         if (colaVacia()) {
             System.out.println("Error: la cola está vacía.");
             return null;

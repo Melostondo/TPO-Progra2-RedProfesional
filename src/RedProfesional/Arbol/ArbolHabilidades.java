@@ -11,6 +11,7 @@ public class ArbolHabilidades implements ArbolTDA {
 
     @Override
     public void inicializarArbol(String raiz) {
+
         this.raiz = new Nodo(raiz);
     }
 
@@ -18,35 +19,39 @@ public class ArbolHabilidades implements ArbolTDA {
     public void insertarHabilidad(String habilidadPadre, String nuevaHabilidad) {
         Nodo padre = buscarNodo(this.raiz, habilidadPadre);
 
-        if (padre == null) {
+        if (padre == null) { // BUSCA LA HABILIAD PADRE, EJEMPLO DESARROLLO --> JAVA - PYTHON
             System.out.println("Error: no existe la habilidad padre.");
-        } else if (padre.cantidadHijos == padre.hijos.length) {
+
+        } else if (padre.cantidadHijos == padre.hijos.length) { // VERIFICA SI TIENE EL MAXIMO DE HIJOS
             System.out.println("Error: no se pueden agregar más subhabilidades.");
+
         } else {
-            padre.hijos[padre.cantidadHijos] = new Nodo(nuevaHabilidad);
+            padre.hijos[padre.cantidadHijos] = new Nodo(nuevaHabilidad); // CREA EL NODO, EJEMPLO PYTHON
             padre.cantidadHijos++;
         }
     }
 
     @Override
     public boolean buscarHabilidad(String habilidad) {
+
         return buscarNodo(this.raiz, habilidad) != null;
     }
 
     private Nodo buscarNodo(Nodo actual, String habilidad) {
+
         if (actual == null) {
-            return null;
+            return null; // DEVUELVE NULL SI LLEGO A UN NODO VACIO, ESO QUIER DECIR QUE NO ENCONTRO NADA POR ESA RAMA
         }
 
-        if (actual.nombre.equalsIgnoreCase(habilidad)) {
+        if (actual.nombre.equalsIgnoreCase(habilidad)) { // COMPARA EL NOMBRE DEL NODO ACTUAL CON LA HABILIDAD
             return actual;
         }
 
-        for (int i = 0; i < actual.cantidadHijos; i++) {
-            Nodo encontrado = buscarNodo(actual.hijos[i], habilidad);
+        for (int i = 0; i < actual.cantidadHijos; i++) { // SI NO LO ENCONTRO SE FIJA EN SUS HIJOS
+            Nodo encontrado = buscarNodo(actual.hijos[i], habilidad); // LLAMADO RECURSIVO PARA SEGUIR LA BUSQUEDA CON CADA HIJO
 
             if (encontrado != null) {
-                return encontrado;
+                return encontrado; // SI LA ENCONTRO LA DEVUELVE
             }
         }
 
@@ -96,14 +101,14 @@ public class ArbolHabilidades implements ArbolTDA {
 
     private void mostrarJerarquia(Nodo actual, int nivel) {
         if (actual == null) {
-            return;
+            return; // SI EL NODO NO EXISTE TERMINA LA FUNCION RECURSIVA
         }
 
         for (int i = 0; i < nivel; i++) {
-            System.out.print("  ");
+            System.out.print("  "); // IMPRIME ESPACIOS SEGUN EL NIVEL DEL NODO
         }
 
-        System.out.println("- " + actual.nombre);
+        System.out.println("- " + actual.nombre); // MUESTRA EL NOMBRE DE LA HABILIDAD ACUTAL
 
         for (int i = 0; i < actual.cantidadHijos; i++) {
             mostrarJerarquia(actual.hijos[i], nivel + 1);
@@ -112,6 +117,7 @@ public class ArbolHabilidades implements ArbolTDA {
 
     @Override
     public int contarHabilidades() {
+
         return contarHabilidades(this.raiz);
     }
 
@@ -131,6 +137,7 @@ public class ArbolHabilidades implements ArbolTDA {
 
     @Override
     public boolean estaVacio() {
+
         return raiz == null;
     }
 }

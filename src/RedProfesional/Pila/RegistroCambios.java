@@ -11,7 +11,7 @@ public class RegistroCambios implements PilaTDA {
     }
 
     @Override
-    public void apilar(HistorialCambios x) {
+    public void apilar(HistorialCambios x) { //AGREGA UN NUEVO CAMBIO AL TOPE DE LA PILA
         NodoCambio nuevo = new NodoCambio();
         nuevo.valor = x;
         nuevo.siguiente = tope;
@@ -19,7 +19,7 @@ public class RegistroCambios implements PilaTDA {
     }
 
     @Override
-    public void desapilar() {
+    public void desapilar() { // ELIMINA EL ULTIMO CAMBIO
         if (pilaVacia()) {
             System.out.println("Error: no se puede desapilar porque la pila está vacía.");
         } else {
@@ -28,7 +28,7 @@ public class RegistroCambios implements PilaTDA {
     }
 
     @Override
-    public HistorialCambios tope() {
+    public HistorialCambios tope() { // DEVUELVE EL ULTIMO CAMBIO SIN ELIMINARLO
         if (pilaVacia()) {
             System.out.println("Error: la pila está vacía.");
             return null;
@@ -39,6 +39,7 @@ public class RegistroCambios implements PilaTDA {
 
     @Override
     public boolean pilaVacia() {
+
         return tope == null;
     }
 }
